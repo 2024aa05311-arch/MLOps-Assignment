@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: heart-disease-api
-        image: heart-disease-api:latest
+        image: mlops-assignment-heart-disease-api:latest
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
