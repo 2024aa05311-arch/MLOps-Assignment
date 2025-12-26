@@ -84,9 +84,7 @@ else:
 # Initialize FastAPI app
 app = FastAPI(
     title="Heart Disease Prediction API",
-    description="ML-powered API for predicting heart disease risk with monitoring",
     version="1.0.0",
-    contact={"name": "MLOps Team", "email": "mlops@example.com"},
 )
 
 # Load model and preprocessor at startup
