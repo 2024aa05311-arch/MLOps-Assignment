@@ -235,10 +235,10 @@ if __name__ == "__main__":
     # from the module context.
     import sys
     import os
-    
+
     # Add current directory to path
     sys.path.append(os.getcwd())
-    
+
     try:
         import preprocessing_pipeline
         preprocessing_pipeline.create_and_save_preprocessor()
