@@ -26,15 +26,11 @@ pip install -r requirements.txt
 
 ### 2. Run Pipeline
 ```bash
-# Complete ML pipeline (one command)
-python 01_data_acquisition.py && \
-python 02_preprocessing.py && \
-python 03_eda.py && \
-python 04_feature_engineering.py && \
-python 05_model_training.py && \
-python 06_model_evaluation.py && \
-python 07_mlflow_tracking.py && \
-python 09_model_packaging.py
+# Complete ML pipeline (one command) — updated consolidated scripts
+python 01_data_pipeline.py && \
+python 02_model_pipeline.py && \
+python 03_mlflow_tracking.py && \
+python 04_model_packaging.py
 ```
 
 ### 3. Deploy
@@ -57,20 +53,18 @@ python app.py
 
 ```
 MLOps-Assignment/
-├── 01_data_acquisition.py      # Download data
-├── 02_preprocessing.py          # Clean data
-├── 03_eda.py                    # Analyze data
-├── 04_feature_engineering.py    # Prepare features
-├── 05_model_training.py         # Train models
-├── 06_model_evaluation.py       # Evaluate models
-├── 07_mlflow_tracking.py        # Track experiments
-├── 09_model_packaging.py        # Package model
+├── 01_data_pipeline.py          # Data acquisition & preprocessing pipeline
+├── 02_model_pipeline.py         # Feature engineering, training, evaluation pipeline
+├── 03_mlflow_tracking.py        # Track experiments with MLflow
+├── 04_model_packaging.py        # Package best model for serving
 ├── app.py                       # FastAPI application
-├── predict.py                   # Inference script
-├── preprocessing_pipeline.py    # Reusable pipeline
+├── predict.py                   # Inference script / client usage examples
+├── preprocessing_pipeline.py    # Reusable preprocessing pipeline (class)
+├── packaged_models/             # Packaged model artifacts (pickle / mlflow)
 ├── Dockerfile                   # Container config
 ├── docker-compose.yml           # Docker setup
 ├── requirements.txt             # Dependencies
+├── requirements-api.txt         # API-specific dependencies
 ├── .github/workflows/ci-cd.yml  # CI/CD pipeline
 ├── k8s/                         # Kubernetes configs
 ├── helm/                        # Helm chart
