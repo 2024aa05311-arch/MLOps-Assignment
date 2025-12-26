@@ -24,7 +24,7 @@ sample_patient = {
     "oldpeak": 2.3,
     "slope": 0,
     "ca": 0,
-    "thal": 1
+    "thal": 1,
 }
 
 # Sample batch data
@@ -44,8 +44,8 @@ sample_batch = {
             "oldpeak": 3.5,
             "slope": 0,
             "ca": 0,
-            "thal": 2
-        }
+            "thal": 2,
+        },
     ]
 }
 
@@ -55,7 +55,7 @@ def test_api():
     print("=" * 80)
     print("TESTING HEART DISEASE PREDICTION API")
     print("=" * 80)
-    
+
     # Test 1: Root endpoint
     print("\n[TEST 1] Root Endpoint")
     print("-" * 80)
@@ -67,7 +67,7 @@ def test_api():
         print("✓ Root endpoint test passed")
     except Exception as e:
         print(f"✗ Root endpoint test failed: {str(e)}")
-    
+
     # Test 2: Health check
     print("\n[TEST 2] Health Check Endpoint")
     print("-" * 80)
@@ -77,39 +77,37 @@ def test_api():
         data = response.json()
         print(f"Response: {json.dumps(data, indent=2)}")
         assert response.status_code == 200
-        assert data['status'] == 'healthy'
-        assert data['model_loaded'] == True
+        assert data["status"] == "healthy"
+        assert data["model_loaded"] == True
         print("✓ Health check test passed")
     except Exception as e:
         print(f"✗ Health check test failed: {str(e)}")
-    
+
     # Test 3: Single prediction
     print("\n[TEST 3] Single Prediction Endpoint")
     print("-" * 80)
     print(f"Input: {json.dumps(sample_patient, indent=2)}")
     try:
         response = requests.post(
-            f"{BASE_URL}/predict",
-            json=sample_patient,
-            headers={"Content-Type": "application/json"}
+            f"{BASE_URL}/predict", json=sample_patient, headers={"Content-Type": "application/json"}
         )
         print(f"\nStatus Code: {response.status_code}")
         data = response.json()
         print(f"Response: {json.dumps(data, indent=2)}")
-        
+
         assert response.status_code == 200
-        assert 'prediction' in data
-        assert 'prediction_label' in data
-        assert 'confidence' in data
-        assert data['prediction'] in [0, 1]
-        
+        assert "prediction" in data
+        assert "prediction_label" in data
+        assert "confidence" in data
+        assert data["prediction"] in [0, 1]
+
         print(f"\n✓ Prediction: {data['prediction_label']}")
         print(f"✓ Confidence: {data['confidence']*100:.2f}%")
         print(f"✓ Probability of Disease: {data['probability_disease']*100:.2f}%")
         print("✓ Single prediction test passed")
     except Exception as e:
         print(f"✗ Single prediction test failed: {str(e)}")
-    
+
     # Test 4: Batch prediction
     print("\n[TEST 4] Batch Prediction Endpoint")
     print("-" * 80)
@@ -118,23 +116,25 @@ def test_api():
         response = requests.post(
             f"{BASE_URL}/predict/batch",
             json=sample_batch,
-            headers={"Content-Type": "application/json"}
+            headers={"Content-Type": "application/json"},
         )
         print(f"\nStatus Code: {response.status_code}")
         data = response.json()
         print(f"Response: {json.dumps(data, indent=2)}")
-        
+
         assert response.status_code == 200
-        assert 'predictions' in data
-        assert data['count'] == len(sample_batch['patients'])
-        
+        assert "predictions" in data
+        assert data["count"] == len(sample_batch["patients"])
+
         print(f"\n✓ Batch predictions: {data['count']}")
-        for i, pred in enumerate(data['predictions'], 1):
-            print(f"  Patient {i}: {pred['prediction_label']} (Confidence: {pred['confidence']*100:.2f}%)")
+        for i, pred in enumerate(data["predictions"], 1):
+            print(
+                f"  Patient {i}: {pred['prediction_label']} (Confidence: {pred['confidence']*100:.2f}%)"
+            )
         print("✓ Batch prediction test passed")
     except Exception as e:
         print(f"✗ Batch prediction test failed: {str(e)}")
-    
+
     # Test 5: Model info
     print("\n[TEST 5] Model Info Endpoint")
     print("-" * 80)
@@ -143,17 +143,17 @@ def test_api():
         print(f"Status Code: {response.status_code}")
         data = response.json()
         print(f"Response: {json.dumps(data, indent=2)}")
-        
+
         assert response.status_code == 200
-        assert 'model_type' in data
-        assert 'n_features' in data
-        
+        assert "model_type" in data
+        assert "n_features" in data
+
         print(f"\n✓ Model Type: {data['model_type']}")
         print(f"✓ Number of Features: {data['n_features']}")
         print("✓ Model info test passed")
     except Exception as e:
         print(f"✗ Model info test failed: {str(e)}")
-    
+
     # Test 6: Invalid input
     print("\n[TEST 6] Invalid Input Handling")
     print("-" * 80)
@@ -162,14 +162,14 @@ def test_api():
         response = requests.post(
             f"{BASE_URL}/predict",
             json=invalid_patient,
-            headers={"Content-Type": "application/json"}
+            headers={"Content-Type": "application/json"},
         )
         print(f"Status Code: {response.status_code}")
         assert response.status_code == 422  # Validation error
         print("✓ Invalid input test passed (correctly rejected)")
     except Exception as e:
         print(f"✗ Invalid input test failed: {str(e)}")
-    
+
     # Final summary
     print("\n" + "=" * 80)
     print("API TESTING COMPLETE")
@@ -182,7 +182,7 @@ def test_api():
 if __name__ == "__main__":
     print("\nWaiting for API to be ready...")
     time.sleep(2)
-    
+
     try:
         test_api()
     except requests.exceptions.ConnectionError:

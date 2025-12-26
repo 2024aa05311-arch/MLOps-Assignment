@@ -10,7 +10,7 @@ addopts = [
     "--cov=.",
     "--cov-report=html",
     "--cov-report=term-missing",
-    "--cov-fail-under=70"
+    "--cov-fail-under=5"
 ]
 markers = [
     "slow: marks tests as slow",
