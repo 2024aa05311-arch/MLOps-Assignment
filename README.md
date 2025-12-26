@@ -19,7 +19,7 @@
 ### 1. Setup
 ```bash
 # Clone and install
-git clone <your-repo-url>
+git clone https://github.com/2024aa05311-arch/MLOps-Assignment.git
 cd MLOps-Assignment
 pip install -r requirements.txt
 ```
@@ -127,61 +127,9 @@ conda activate heart-disease-mlops
 
 ---
 
-## 🎓 Pipeline Explanation
-
-### 1. Data Pipeline
-```bash
-# Step 1: Get data from UCI repository
-python 01_data_acquisition.py
-
-# Step 2: Clean and preprocess
-python 02_preprocessing.py
-
-# Step 3: Exploratory data analysis
-python 03_eda.py
-```
-
-**Output**: Clean dataset + visualizations in `outputs/eda_visualizations/`
-
-### 2. ML Pipeline
-```bash
-# Step 4: Feature engineering (scaling, splitting)
-python 04_feature_engineering.py
-
-# Step 5: Train 4 models with GridSearchCV
-python 05_model_training.py
-
-# Step 6: Evaluate and compare models
-python 06_model_evaluation.py
-```
-
-**Models Trained**: Logistic Regression, Random Forest, SVM, Gradient Boosting  
-**Output**: Trained models in `models/`, results in `outputs/model_evaluation/`
-
-### 3. Experiment Tracking
-```bash
-# Step 7: Log everything to MLflow
-python 07_mlflow_tracking.py
-
-# View experiments
-mlflow ui  # http://localhost:5000
-```
-
-**Tracked**: Parameters, metrics, artifacts, model registry
-
-### 4. Model Packaging
-```bash
-# Step 8: Package best model
-python 09_model_packaging.py
-```
-
-**Output**: Pickle + MLflow formats in `packaged_models/`
-
----
-
 ## 🐳 Deployment Options
 
-### Option 1: Docker (Recommended)
+### Docker
 ```bash
 # Build and run
 docker-compose up -d
@@ -192,42 +140,6 @@ curl http://localhost:8000/docs
 
 # Stop
 docker-compose down
-```
-
-### Option 2: Kubernetes
-```bash
-# Deploy all resources
-kubectl apply -f k8s/
-
-# Check status
-kubectl get all -n ml-models
-
-# Access API (port forward)
-kubectl port-forward service/heart-disease-api-service 8000:80 -n ml-models
-
-# Clean up
-kubectl delete namespace ml-models
-```
-
-### Option 3: Helm Chart
-```bash
-# Install
-helm install heart-disease-api ./helm/heart-disease-api
-
-# Upgrade
-helm upgrade heart-disease-api ./helm/heart-disease-api
-
-# Uninstall
-helm uninstall heart-disease-api
-```
-
-### Option 4: Local Development
-```bash
-# Run directly
-python app.py
-
-# Or with uvicorn
-uvicorn app:app --reload
 ```
 
 ---
@@ -408,7 +320,7 @@ GET /metrics  # Prometheus format
 
 ## 🔗 Links & Resources
 
-- **Repository**: [Your GitHub URL]
+- **Repository**: https://github.com/2024aa05311-arch/MLOps-Assignment
 - **Dataset**: [UCI Heart Disease](https://archive.ics.uci.edu/dataset/45/heart+disease)
 - **Full Report**: See `FINAL_REPORT.md`
 - **Technical Details**: See `walkthrough.md` artifact
@@ -426,22 +338,16 @@ This is an academic project. For production use:
 
 ---
 
-## 📄 License
-
-[Your License]
-
----
-
 ## 👤 Author
 
-**Name**: [Your Name]  
-**Email**: [Your Email]  
+**Name**: Aman Mahnot  
+**Email**: 2024AA05311@wilp.bits-pilani.ac.in  
 **Course**: MLOps Assignment  
-**Date**: December 2025  
+**Date**: December 2025
 
 ---
 
 **Version**: 1.0.0  
-**Status**: ✅ Production Ready
+**Status**: Production Ready
 
 For detailed technical documentation, see `FINAL_REPORT.md`

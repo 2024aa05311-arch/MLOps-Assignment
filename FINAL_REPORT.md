@@ -100,14 +100,11 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # 4. Run complete pipeline
-python 01_data_acquisition.py
-python 02_preprocessing.py
-python 03_eda.py
-python 04_feature_engineering.py
-python 05_model_training.py
-python 06_model_evaluation.py
-python 07_mlflow_tracking.py
-python 09_model_packaging.py
+# 4. Run complete pipeline
+python 01_data_pipeline.py       # Data acquisition and preprocessing
+python 02_model_pipeline.py      # Feature engineering, training, and evaluation
+python 03_mlflow_tracking.py     # Experiment tracking with MLflow
+python 04_model_packaging.py     # Model registry and packaging
 ```
 
 ### 2.3 Docker Deployment
@@ -664,9 +661,6 @@ MLOps-Assignment/
 │   ├── eda_visualizations/ # EDA plots
 │   └── model_evaluation/   # Evaluation results
 ├── tests/                   # Unit tests
-│   ├── test_preprocessing.py
-│   ├── test_predict.py
-│   └── test_data_processing.py
 ├── k8s/                     # Kubernetes manifests
 │   ├── namespace.yaml
 │   ├── deployment.yaml
@@ -681,6 +675,10 @@ MLOps-Assignment/
 │   └── docker-compose-monitoring.yml
 ├── .github/workflows/       # CI/CD pipelines
 │   └── ci-cd.yml
+├── 01_data_pipeline.py      # Data ingestion & processing
+├── 02_model_pipeline.py     # Training & Evaluation
+├── 03_mlflow_tracking.py    # Experiment tracking
+├── 04_model_packaging.py    # Model registry
 ├── app.py                   # FastAPI application
 ├── predict.py               # Inference script
 ├── preprocessing_pipeline.py # Reusable pipeline
@@ -698,24 +696,19 @@ MLOps-Assignment/
 | File | Purpose |
 |------|---------|
 | README.md | Project overview and quick start |
-| DOCKER_README.md | Docker deployment guide |
-| KUBERNETES_DEPLOYMENT.md | K8s deployment instructions |
-| MONITORING.md | Monitoring setup guide |
+| FINAL_REPORT.md | Detailed project report |
 | walkthrough.md | Detailed technical walkthrough |
 
 ### 12.3 Key Scripts
 
 | Script | Purpose |
 |--------|---------|
-| 01_data_acquisition.py | Download dataset |
-| 02_preprocessing.py | Data cleaning |
-| 03_eda.py | Exploratory analysis |
-| 04_feature_engineering.py | Feature transformation |
-| 05_model_training.py | Model training |
-| 06_model_evaluation.py | Model evaluation |
-| 07_mlflow_tracking.py | Experiment tracking |
-| 09_model_packaging.py | Model packaging |
-| test_api.py | API testing |
+| 01_data_pipeline.py | Data ingestion and preprocessing |
+| 02_model_pipeline.py | Model training and evaluation |
+| 03_mlflow_tracking.py | Experiment tracking with MLflow |
+| 04_model_packaging.py | Packaged models for deployment |
+| app.py | FastAPI application serving |
+| predict.py | Inference script |
 
 ### 12.4 Links & Resources
 
