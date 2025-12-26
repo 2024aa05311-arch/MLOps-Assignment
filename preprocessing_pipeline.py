@@ -230,5 +230,19 @@ def create_and_save_preprocessor(
 
 
 if __name__ == "__main__":
-    # Create and save preprocessor
-    preprocessor = create_and_save_preprocessor()
+    # To ensure the class is pickled correctly as 'preprocessing_pipeline.HeartDiseasePreprocessor'
+    # and not '__main__.HeartDiseasePreprocessor', we import the module and run the function
+    # from the module context.
+    import sys
+    import os
+    
+    # Add current directory to path
+    sys.path.append(os.getcwd())
+    
+    try:
+        import preprocessing_pipeline
+        preprocessing_pipeline.create_and_save_preprocessor()
+    except ImportError:
+        # Fallback if something goes wrong with import
+        print("[WARNING] Could not import preprocessing_pipeline module. Running directly.")
+        create_and_save_preprocessor()
