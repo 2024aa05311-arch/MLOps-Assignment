@@ -5,17 +5,17 @@ Integrates MLflow to log parameters, metrics, and artifacts for all model experi
 
 import os
 import pandas as pd
-import numpy as np
+
 import mlflow
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
-import joblib
+
 import json
 from datetime import datetime
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
-from sklearn.model_selection import GridSearchCV, cross_val_score
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import (
     accuracy_score,
     precision_score,
@@ -51,7 +51,7 @@ def setup_mlflow_experiment():
             EXPERIMENT_NAME, artifact_location="./mlflow_artifacts"
         )
         print(f"\n[INFO] Created new experiment: {EXPERIMENT_NAME}")
-    except:
+    except Exception:
         experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
         experiment_id = experiment.experiment_id
         print(f"\n[INFO] Using existing experiment: {EXPERIMENT_NAME}")
@@ -60,7 +60,7 @@ def setup_mlflow_experiment():
 
     print(f"  - Experiment ID: {experiment_id}")
     print(f"  - Tracking URI: {MLFLOW_TRACKING_URI}")
-    print(f"  - Artifact Location: ./mlflow_artifacts")
+    print("  - Artifact Location: ./mlflow_artifacts")
 
     return experiment_id
 
@@ -156,7 +156,7 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
         mlflow.log_param("cv_folds", cv)
 
         # GridSearchCV
-        print(f"\n[INFO] Training with GridSearchCV...")
+        print("\n[INFO] Training with GridSearchCV...")
         grid_search = GridSearchCV(
             model, param_grid, cv=cv, scoring="roc_auc", n_jobs=-1, verbose=1
         )
@@ -166,7 +166,7 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
         best_params = grid_search.best_params_
         cv_score = grid_search.best_score_
 
-        print(f"\n[SUCCESS] Training completed!")
+        print("\n[SUCCESS] Training completed!")
         print(f"  - Best params: {best_params}")
         print(f"  - CV ROC-AUC: {cv_score:.4f}")
 
@@ -203,7 +203,7 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
         for metric_name, metric_value in metrics.items():
             mlflow.log_metric(metric_name, metric_value)
 
-        print(f"\n[METRICS]")
+        print("\n[METRICS]")
         print(
             f"  Training - Accuracy: {metrics['train_accuracy']:.4f}, ROC-AUC: {metrics['train_roc_auc']:.4f}"
         )
@@ -212,7 +212,7 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
         )
 
         # Generate and log plots
-        print(f"\n[INFO] Generating and logging plots...")
+        print("\n[INFO] Generating and logging plots...")
 
         # Confusion matrix
         cm_path = plot_confusion_matrix(y_test, y_test_pred, f"{model_name} Confusion Matrix")
@@ -224,8 +224,8 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
         mlflow.log_artifact(roc_path, "plots")
         os.remove(roc_path)
 
-        print(f"  ✓ Confusion matrix logged")
-        print(f"  ✓ ROC curve logged")
+        print("  ✓ Confusion matrix logged")
+        print("  ✓ ROC curve logged")
 
         # Log model with signature
         signature = infer_signature(X_train, y_train_pred)
@@ -235,7 +235,7 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
             signature=signature,
             registered_model_name=f"heart_disease_{model_name}",
         )
-        print(f"  ✓ Model logged")
+        print("  ✓ Model logged")
 
         # Log additional artifacts
         model_info = {
@@ -253,7 +253,7 @@ def train_and_log_model(model_name, model, param_grid, X_train, y_train, X_test,
         mlflow.log_artifact(info_path, "metadata")
         os.remove(info_path)
 
-        print(f"  ✓ Metadata logged")
+        print("  ✓ Metadata logged")
         print(f"\n[SUCCESS] MLflow run completed for {model_name}")
 
         return best_model, metrics
@@ -264,7 +264,7 @@ def run_all_mlflow_experiments(data_dir="data/engineered", cv=5):
     Run all model experiments with MLflow tracking
     """
     # Setup MLflow
-    experiment_id = setup_mlflow_experiment()
+    setup_mlflow_experiment()
 
     # Load data
     X_train, X_test, y_train, y_test = load_data(data_dir)
@@ -335,7 +335,7 @@ def run_all_mlflow_experiments(data_dir="data/engineered", cv=5):
     print("ALL MLFLOW EXPERIMENTS COMPLETED")
     print("=" * 80)
 
-    print(f"\n[SUMMARY]")
+    print("\n[SUMMARY]")
     print(f"\n{'Model':<25} {'Test Accuracy':>15} {'Test ROC-AUC':>15}")
     print("-" * 57)
     for model_name, result in results.items():
@@ -353,14 +353,14 @@ def run_all_mlflow_experiments(data_dir="data/engineered", cv=5):
     print(f"\n[BEST MODEL] {best_model_name.replace('_', ' ').title()}")
     print(f"             Test ROC-AUC: {best_roc_auc:.4f}")
 
-    print(f"\n[INFO] MLflow Tracking:")
+    print("\n[INFO] MLflow Tracking:")
     print(f"  - Experiment: {EXPERIMENT_NAME}")
     print(f"  - Runs logged: {len(experiments)}")
     print(f"  - Tracking URI: {MLFLOW_TRACKING_URI}")
 
-    print(f"\n[INFO] To view experiments, run:")
-    print(f"       mlflow ui")
-    print(f"       Then open: http://127.0.0.1:5000")
+    print("\n[INFO] To view experiments, run:")
+    print("       mlflow ui")
+    print("       Then open: http://127.0.0.1:5000")
 
     return results
 

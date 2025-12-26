@@ -78,7 +78,7 @@ def test_api():
         print(f"Response: {json.dumps(data, indent=2)}")
         assert response.status_code == 200
         assert data["status"] == "healthy"
-        assert data["model_loaded"] == True
+        assert data["model_loaded"] is True
         print("✓ Health check test passed")
     except Exception as e:
         print(f"✗ Health check test failed: {str(e)}")

@@ -8,12 +8,12 @@ import os
 import joblib
 import mlflow
 import mlflow.sklearn
-import pandas as pd
-import numpy as np
+
+
 import json
 from datetime import datetime
 from skl2onnx import to_onnx
-from preprocessing_pipeline import HeartDiseasePreprocessor
+
 
 
 def load_best_model(model_path="models/random_forest.pkl"):
@@ -91,10 +91,10 @@ print(f"Probability: {probability[0]}")
 
     usage_path = os.path.join(output_dir, "usage_example.py")
     with open(usage_path, "w") as f:
-        f.write(usage_example.strip())
+        f.write(usage_example.strip() + "\n")
     print(f"[INFO] Usage example saved: {usage_path}")
 
-    print(f"\n[SUCCESS] Pickle packaging complete!")
+    print("\n[SUCCESS] Pickle packaging complete!")
 
     return model_path, metadata_path
 
@@ -111,7 +111,7 @@ def save_model_onnx(model, output_dir="packaged_models/onnx"):
         # Create sample input for ONNX conversion
         initial_type = [("float_input", "float", [None, 13])]
 
-        print(f"\n[INFO] Converting model to ONNX format...")
+        print("\n[INFO] Converting model to ONNX format...")
 
         # Convert to ONNX
         onnx_model = to_onnx(model, initial_types=initial_type, target_opset=12)
@@ -173,10 +173,10 @@ print(f"Prediction: {prediction[0]}")
 
         usage_path = os.path.join(output_dir, "usage_example.py")
         with open(usage_path, "w") as f:
-            f.write(onnx_usage.strip())
+            f.write(onnx_usage.strip() + "\n")
         print(f"[INFO] ONNX usage example saved: {usage_path}")
 
-        print(f"\n[SUCCESS] ONNX packaging complete!")
+        print("\n[SUCCESS] ONNX packaging complete!")
 
         return onnx_path, metadata_path
 
@@ -196,7 +196,7 @@ def package_with_mlflow(model_name="random_forest", output_dir="packaged_models/
 
     mlflow.set_tracking_uri("file:./mlruns")
 
-    print(f"\n[INFO] Loading model from MLflow Model Registry...")
+    print("\n[INFO] Loading model from MLflow Model Registry...")
 
     # Load from MLflow
     model_uri = f"models:/heart_disease_{model_name}/1"
@@ -204,7 +204,7 @@ def package_with_mlflow(model_name="random_forest", output_dir="packaged_models/
     try:
         # Load model
         model = mlflow.sklearn.load_model(model_uri)
-        print(f"  ✓ Model loaded from MLflow registry")
+        print("  ✓ Model loaded from MLflow registry")
 
         # Save as pyfunc
         mlflow_path = os.path.join(output_dir, "mlflow_model")
@@ -245,10 +245,10 @@ print(f"Prediction: {prediction[0]}")
 
         usage_path = os.path.join(output_dir, "usage_example.py")
         with open(usage_path, "w") as f:
-            f.write(mlflow_usage.strip())
+            f.write(mlflow_usage.strip() + "\n")
         print(f"[INFO] MLflow usage example saved: {usage_path}")
 
-        print(f"\n[SUCCESS] MLflow packaging complete!")
+        print("\n[SUCCESS] MLflow packaging complete!")
 
         return mlflow_path
 
@@ -265,7 +265,7 @@ def create_deployment_package():
     print("=" * 80)
 
     # Package summary
-    print(f"\n[INFO] Packaging best model (Random Forest) in multiple formats...")
+    print("\n[INFO] Packaging best model (Random Forest) in multiple formats...")
 
     # Load model
     model = load_best_model()
@@ -392,7 +392,7 @@ See `requirements.txt` for complete list of dependencies.
     print("MODEL PACKAGING COMPLETE")
     print("=" * 80)
 
-    print(f"\n[SUMMARY]")
+    print("\n[SUMMARY]")
     print(f"  ✓ Pickle format: {pickle_path}")
     if onnx_path:
         print(f"  ✓ ONNX format: {onnx_path}")
@@ -400,8 +400,8 @@ See `requirements.txt` for complete list of dependencies.
         print(f"  ✓ MLflow format: {mlflow_path}")
     print(f"  ✓ Deployment README: {readme_path}")
 
-    print(f"\n[INFO] All models packaged and ready for deployment!")
-    print(f"       See packaged_models/README.md for usage instructions")
+    print("\n[INFO] All models packaged and ready for deployment!")
+    print("       See packaged_models/README.md for usage instructions")
 
 
 if __name__ == "__main__":

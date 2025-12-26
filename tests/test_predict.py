@@ -5,7 +5,7 @@ Tests the HeartDiseasePredictor class
 
 import pytest
 import pandas as pd
-import numpy as np
+
 from predict import HeartDiseasePredictor
 
 

@@ -1,4 +1,4 @@
-import argparse
+
 import json
 import os
 import joblib
@@ -10,7 +10,7 @@ import pandas as pd
 import seaborn as sns
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV, cross_val_score, train_test_split
+from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import (
@@ -68,14 +68,14 @@ def prepare_features_and_target(df):
     X = df[feature_cols].copy()
     y = df[target_col].copy()
 
-    print(f"\n[INFO] Features and target prepared:")
+    print("\n[INFO] Features and target prepared:")
     print(f"  - Feature matrix shape: {X.shape}")
     print(f"  - Target vector shape: {y.shape}")
     print(f"\n[INFO] Feature columns ({len(feature_cols)}):")
     for i, col in enumerate(feature_cols, 1):
         print(f"  {i:2d}. {col}")
 
-    print(f"\n[INFO] Target distribution:")
+    print("\n[INFO] Target distribution:")
     print(f"  - Class 0 (No Disease): {(y == 0).sum()} ({(y == 0).sum()/len(y)*100:.2f}%)")
     print(f"  - Class 1 (Disease): {(y == 1).sum()} ({(y == 1).sum()/len(y)*100:.2f}%)")
 
@@ -96,13 +96,13 @@ def split_train_test(X, y, test_size=0.2, random_state=42):
         X, y, test_size=test_size, random_state=random_state, stratify=y  # Ensure balanced split
     )
 
-    print(f"\n[SUCCESS] Data split completed!")
-    print(f"\n  Training set:")
+    print("\n[SUCCESS] Data split completed!")
+    print("\n  Training set:")
     print(f"    - Samples: {len(X_train)}")
     print(f"    - Class 0: {(y_train == 0).sum()} ({(y_train == 0).sum()/len(y_train)*100:.2f}%)")
     print(f"    - Class 1: {(y_train == 1).sum()} ({(y_train == 1).sum()/len(y_train)*100:.2f}%)")
 
-    print(f"\n  Testing set:")
+    print("\n  Testing set:")
     print(f"    - Samples: {len(X_test)}")
     print(f"    - Class 0: {(y_test == 0).sum()} ({(y_test == 0).sum()/len(y_test)*100:.2f}%)")
     print(f"    - Class 1: {(y_test == 1).sum()} ({(y_test == 1).sum()/len(y_test)*100:.2f}%)")
@@ -119,7 +119,7 @@ def scale_features(X_train, X_test, feature_cols):
     print("STEP 3: FEATURE SCALING")
     print("-" * 80)
 
-    print(f"\n[INFO] Applying StandardScaler to normalize features...")
+    print("\n[INFO] Applying StandardScaler to normalize features...")
     print("  Note: Scaler is fit on training data only to prevent data leakage")
 
     # Initialize scaler
@@ -133,13 +133,13 @@ def scale_features(X_train, X_test, feature_cols):
     X_train_scaled = pd.DataFrame(X_train_scaled, columns=feature_cols, index=X_train.index)
     X_test_scaled = pd.DataFrame(X_test_scaled, columns=feature_cols, index=X_test.index)
 
-    print(f"\n[SUCCESS] Features scaled successfully!")
-    print(f"\n[INFO] Scaling statistics (training set):")
-    print(f"  - Mean of scaled features: ~0.0")
-    print(f"  - Std of scaled features: ~1.0")
+    print("\n[SUCCESS] Features scaled successfully!")
+    print("\n[INFO] Scaling statistics (training set):")
+    print("  - Mean of scaled features: ~0.0")
+    print("  - Std of scaled features: ~1.0")
 
     # Display sample statistics
-    print(f"\n[INFO] Sample feature statistics after scaling:")
+    print("\n[INFO] Sample feature statistics after scaling:")
     print(
         f"{'Feature':<15} {'Train Mean':>12} {'Train Std':>12} {'Test Mean':>12} {'Test Std':>12}"
     )
@@ -329,7 +329,7 @@ def train_logistic_regression(X_train, y_train, cv=5):
 
     grid_search.fit(X_train, y_train)
 
-    print(f"\n[SUCCESS] Training completed!")
+    print("\n[SUCCESS] Training completed!")
     print(f"  - Best parameters: {grid_search.best_params_}")
     print(f"  - Best CV ROC-AUC score: {grid_search.best_score_:.4f}")
 
@@ -381,7 +381,7 @@ def train_random_forest(X_train, y_train, cv=5):
 
     grid_search.fit(X_train, y_train)
 
-    print(f"\n[SUCCESS] Training completed!")
+    print("\n[SUCCESS] Training completed!")
     print(f"  - Best parameters: {grid_search.best_params_}")
     print(f"  - Best CV ROC-AUC score: {grid_search.best_score_:.4f}")
 
@@ -418,7 +418,7 @@ def train_svm(X_train, y_train, cv=5):
 
     grid_search.fit(X_train, y_train)
 
-    print(f"\n[SUCCESS] Training completed!")
+    print("\n[SUCCESS] Training completed!")
     print(f"  - Best parameters: {grid_search.best_params_}")
     print(f"  - Best CV ROC-AUC score: {grid_search.best_score_:.4f}")
 
@@ -470,7 +470,7 @@ def train_gradient_boosting(X_train, y_train, cv=5):
 
     grid_search.fit(X_train, y_train)
 
-    print(f"\n[SUCCESS] Training completed!")
+    print("\n[SUCCESS] Training completed!")
     print(f"  - Best parameters: {grid_search.best_params_}")
     print(f"  - Best CV ROC-AUC score: {grid_search.best_score_:.4f}")
 
@@ -576,29 +576,7 @@ Model Evaluation Script for Heart Disease UCI Dataset
 Evaluates all trained models with comprehensive metrics and visualizations
 """
 
-import os
-import pandas as pd
-import numpy as np
-import joblib
-import json
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import (
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
-    roc_auc_score,
-    roc_curve,
-    confusion_matrix,
-    classification_report,
-    precision_recall_curve,
-    auc,
-)
-from sklearn.model_selection import cross_val_score
-import warnings
 
-warnings.filterwarnings("ignore")
 
 # Set style
 sns.set_style("whitegrid")
@@ -674,7 +652,7 @@ def evaluate_model(model, model_name, X_test, y_test):
     roc_auc = roc_auc_score(y_test, y_pred_proba)
 
     # Display metrics
-    print(f"\n[METRICS]")
+    print("\n[METRICS]")
     print(f"  Accuracy:  {accuracy:.4f} ({accuracy*100:.2f}%)")
     print(f"  Precision: {precision:.4f}")
     print(f"  Recall:    {recall:.4f}")
@@ -683,9 +661,9 @@ def evaluate_model(model, model_name, X_test, y_test):
 
     # Confusion Matrix
     cm = confusion_matrix(y_test, y_pred)
-    print(f"\n[CONFUSION MATRIX]")
-    print(f"                 Predicted")
-    print(f"                 No  Yes")
+    print("\n[CONFUSION MATRIX]")
+    print("                 Predicted")
+    print("                 No  Yes")
     print(f"Actual  No      {cm[0,0]:3d}  {cm[0,1]:3d}")
     print(f"        Yes     {cm[1,0]:3d}  {cm[1,1]:3d}")
 
@@ -694,14 +672,14 @@ def evaluate_model(model, model_name, X_test, y_test):
     specificity = tn / (tn + fp)
     sensitivity = tp / (tp + fn)
 
-    print(f"\n[ADDITIONAL METRICS]")
+    print("\n[ADDITIONAL METRICS]")
     print(f"  Sensitivity (TPR): {sensitivity:.4f}")
     print(f"  Specificity (TNR): {specificity:.4f}")
     print(f"  False Positive Rate: {fp/(fp+tn):.4f}")
     print(f"  False Negative Rate: {fn/(fn+tp):.4f}")
 
     # Classification Report
-    print(f"\n[CLASSIFICATION REPORT]")
+    print("\n[CLASSIFICATION REPORT]")
     print(classification_report(y_test, y_pred, target_names=["No Disease", "Disease"]))
 
     # Store results
@@ -728,7 +706,7 @@ def plot_confusion_matrices(all_results, output_dir):
     print("GENERATING CONFUSION MATRIX VISUALIZATIONS")
     print("=" * 80)
 
-    n_models = len(all_results)
+
     fig, axes = plt.subplots(2, 2, figsize=(14, 12))
     axes = axes.flatten()
 
@@ -765,7 +743,7 @@ def plot_confusion_matrices(all_results, output_dir):
 
 def plot_roc_curves(all_results, y_test, output_dir):
     """Plot ROC curves for all models"""
-    print(f"\n[INFO] Generating ROC curves...")
+    print("\n[INFO] Generating ROC curves...")
 
     plt.figure(figsize=(10, 8))
 
@@ -801,7 +779,7 @@ def plot_roc_curves(all_results, y_test, output_dir):
 
 def plot_metrics_comparison(all_results, output_dir):
     """Create bar chart comparing all metrics across models"""
-    print(f"\n[INFO] Generating metrics comparison chart...")
+    print("\n[INFO] Generating metrics comparison chart...")
 
     # Prepare data
     models = []
@@ -880,7 +858,7 @@ def plot_metrics_comparison(all_results, output_dir):
 
 def save_evaluation_results(all_results, output_dir):
     """Save evaluation results to files"""
-    print(f"\n[INFO] Saving evaluation results...")
+    print("\n[INFO] Saving evaluation results...")
 
     # Save detailed results as JSON
     results_path = os.path.join(output_dir, "evaluation_results.json")
@@ -959,7 +937,7 @@ def model_evaluation_pipeline(
     print("MODEL EVALUATION COMPLETED")
     print("=" * 80)
 
-    print(f"\n[SUMMARY TABLE]")
+    print("\n[SUMMARY TABLE]")
     print(summary_df.to_string(index=False))
 
     # Find best model

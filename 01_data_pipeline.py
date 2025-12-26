@@ -2,12 +2,12 @@ import os
 import argparse
 import warnings
 
-warnings.filterwarnings("ignore")
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder
 
 # Optional heavy deps imported only when needed
 try:
@@ -20,8 +20,7 @@ try:
 except Exception:
     sv = None
 
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import LabelEncoder
+warnings.filterwarnings("ignore")
 
 # Visualization defaults
 sns.set_style("whitegrid")

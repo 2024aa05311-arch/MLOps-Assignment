@@ -197,11 +197,11 @@ def create_and_save_preprocessor(
     print(f"  - Features: {feature_cols}")
 
     # Create and fit preprocessor
-    print(f"\n[INFO] Creating and fitting preprocessor...")
+    print("\n[INFO] Creating and fitting preprocessor...")
     preprocessor = HeartDiseasePreprocessor()
     preprocessor.fit(X)
 
-    print(f"  ✓ Preprocessor fitted")
+    print("  ✓ Preprocessor fitted")
 
     # Save preprocessor
     import os
@@ -210,7 +210,7 @@ def create_and_save_preprocessor(
     preprocessor.save(output_path)
 
     # Test preprocessing
-    print(f"\n[INFO] Testing preprocessing...")
+    print("\n[INFO] Testing preprocessing...")
     X_transformed = preprocessor.transform(X)
 
     print(f"  - Transformed shape: {X_transformed.shape}")

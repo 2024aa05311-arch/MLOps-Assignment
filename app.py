@@ -4,12 +4,12 @@ Containerized model serving with REST API, Logging, and Monitoring
 """
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, validator
-from typing import Optional, List
+
+from pydantic import BaseModel, Field
+from typing import List
 import joblib
 import pandas as pd
-import numpy as np
+
 from preprocessing_pipeline import HeartDiseasePreprocessor
 import uvicorn
 from datetime import datetime

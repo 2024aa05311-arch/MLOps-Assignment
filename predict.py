@@ -5,7 +5,7 @@ Provides easy-to-use prediction interface with input validation
 
 import joblib
 import pandas as pd
-import numpy as np
+
 from preprocessing_pipeline import HeartDiseasePreprocessor
 
 
@@ -41,7 +41,7 @@ class HeartDiseasePredictor:
 
         # Load preprocessor
         self.preprocessor = HeartDiseasePreprocessor.load(preprocessor_path)
-        print(f"  ✓ Preprocessor loaded")
+        print("  ✓ Preprocessor loaded")
 
         # Define expected features
         self.required_features = [
@@ -204,14 +204,14 @@ def example_usage():
     print("\n" + "-" * 80)
     print("SINGLE PREDICTION EXAMPLE")
     print("-" * 80)
-    print(f"\nPatient Data:")
+    print("\nPatient Data:")
     for key, value in patient_1.items():
         print(f"  {key}: {value}")
 
     # Make prediction
     result = predictor.predict(patient_1)
 
-    print(f"\n[PREDICTION RESULT]")
+    print("\n[PREDICTION RESULT]")
     print(f"  Prediction: {result['prediction_label']}")
     print(f"  Confidence: {result['confidence']*100:.2f}%")
     print(f"  Probability of No Disease: {result['probability_no_disease']*100:.2f}%")
