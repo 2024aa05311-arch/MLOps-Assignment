@@ -962,9 +962,11 @@ def model_evaluation_pipeline(
 
 if __name__ == "__main__":
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Model Pipeline")
-    parser.add_argument("--feature-engineering", action="store_true", help="Run only feature engineering")
+    parser.add_argument(
+        "--feature-engineering", action="store_true", help="Run only feature engineering"
+    )
     args = parser.parse_args()
 
     if args.feature_engineering:
