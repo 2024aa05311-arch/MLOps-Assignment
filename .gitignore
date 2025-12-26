@@ -33,8 +33,8 @@ ENV/
 .ipynb_checkpoints/
 
 # MLflow (optional - uncomment to keep)
-# mlruns/
-# mlflow_artifacts/
+mlruns/
+mlflow_artifacts/
 
 # Large data files (keep structure)
 data/raw/*.csv
