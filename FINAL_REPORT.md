@@ -82,7 +82,6 @@ Heart disease is the leading cause of death globally. This project develops an M
 - Docker & Docker Compose
 - Git
 - kubectl (for Kubernetes deployment)
-- Helm (optional)
 ```
 
 ### 2.2 Quick Start
@@ -127,6 +126,8 @@ kubectl apply -f k8s/
 # Or using Helm
 helm install heart-disease-api ./helm/heart-disease-api
 ```
+
+#### Note: Although Helm charts were initially considered, the final deployment was implemented using Kubernetes deployment manifests (deployment.yaml and service.yaml) as permitted by the assignment.
 
 ---
 
@@ -456,10 +457,15 @@ kubectl apply -f k8s/
 kubectl port-forward service/heart-disease-api-service 8000:80 -n ml-models
 ```
 
-**Option 3: Helm Chart**
+**Option 3: Helm Chart(Optional)**
 ```bash
 helm install heart-disease-api ./helm/heart-disease-api
 ```
+Helm charts were initially considered for Kubernetes deployment.  
+However, as per the assignment requirement (deployment manifest **or** Helm chart),
+the final deployment was implemented using Kubernetes manifests
+(`deployment.yaml` and `service.yaml`) only.
+
 
 ### 8.2 Kubernetes Manifests
 
@@ -662,13 +668,15 @@ MLOps-Assignment/
 │   └── model_evaluation/   # Evaluation results
 ├── tests/                   # Unit tests
 ├── k8s/                     # Kubernetes manifests
-│   ├── namespace.yaml
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── configmap.yaml
-│   └── hpa.yaml
-├── helm/                    # Helm chart
-│   └── heart-disease-api/
+   ├── namespace.yaml
+   ├── deployment.yaml
+   ├── service.yaml
+   ├── configmap.yaml
+   ├── hpa.yaml
+   └── screenshots/         # Task 7 deployment proof
+      ├── pods_running.png
+      ├── services.png
+      └── swagger_ui.png
 ├── monitoring/              # Monitoring configs
 │   ├── prometheus.yml
 │   ├── grafana-dashboard.json

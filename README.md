@@ -67,7 +67,6 @@ MLOps-Assignment/
 ├── requirements-api.txt         # API-specific dependencies
 ├── .github/workflows/ci-cd.yml  # CI/CD pipeline
 ├── k8s/                         # Kubernetes configs
-├── helm/                        # Helm chart
 ├── tests/                       # Unit tests
 ├── monitoring/                  # Prometheus/Grafana
 └── README.md                    # This file
@@ -300,7 +299,7 @@ GET /metrics  # Prometheus format
 ✅ **Notebooks/Scripts**: EDA, training, inference  
 ✅ **Tests**: tests/ folder with 31 unit tests  
 ✅ **CI/CD**: GitHub Actions workflow  
-✅ **Deployment**: Kubernetes manifests + Helm chart  
+✅ **Deployment**: Kubernetes manifests
 ✅ **Screenshots**: screenshots/ folder (to be populated)  
 ✅ **Report**: FINAL_REPORT.md (10+ pages)  
 
