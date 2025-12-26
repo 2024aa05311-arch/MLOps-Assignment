@@ -8,6 +8,7 @@ ucimlrepo==0.0.3
 jupyter==1.0.0
 mlflow==2.9.2
 skl2onnx==1.16.0
+onnx==1.15.0
 onnxruntime==1.16.3
 pytest==7.4.3
 pytest-cov==4.1.0
