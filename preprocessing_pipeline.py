@@ -241,6 +241,7 @@ if __name__ == "__main__":
 
     try:
         import preprocessing_pipeline
+
         preprocessing_pipeline.create_and_save_preprocessor()
     except ImportError:
         # Fallback if something goes wrong with import
