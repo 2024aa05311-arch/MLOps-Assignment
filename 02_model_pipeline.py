@@ -1,4 +1,3 @@
-
 import json
 import os
 import joblib
@@ -577,7 +576,6 @@ Evaluates all trained models with comprehensive metrics and visualizations
 """
 
 
-
 # Set style
 sns.set_style("whitegrid")
 plt.rcParams["figure.figsize"] = (12, 8)
@@ -705,7 +703,6 @@ def plot_confusion_matrices(all_results, output_dir):
     print(f"\n{'=' * 80}")
     print("GENERATING CONFUSION MATRIX VISUALIZATIONS")
     print("=" * 80)
-
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 12))
     axes = axes.flatten()

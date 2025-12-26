@@ -15,7 +15,6 @@ from datetime import datetime
 from skl2onnx import to_onnx
 
 
-
 def load_best_model(model_path="models/random_forest.pkl"):
     """Load the best performing model"""
     print("=" * 80)

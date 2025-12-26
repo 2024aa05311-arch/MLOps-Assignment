@@ -288,6 +288,17 @@ black --check .
 
 **View**: `.github/workflows/ci-cd.yml`
 
+### How to Trigger
+The pipeline triggers automatically on:
+- **Push** to `main` branch
+- **Pull Request** to `main` branch
+- **Manual Dispatch** via GitHub Actions UI
+
+### Checking Status
+1. Go to **Actions** tab in GitHub repository
+2. Select the latest workflow run
+3. View logs for each step (Introduction, Lint, Test, Train, Deploy)
+
 ---
 
 ## 📚 API Documentation
