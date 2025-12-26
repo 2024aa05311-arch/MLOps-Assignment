@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 ### 2. Run Pipeline
 ```bash
-# Complete ML pipeline (one command) — updated consolidated scripts
+# Run complete pipeline
 python 01_data_pipeline.py && \
 python 02_model_pipeline.py && \
 python 03_mlflow_tracking.py && \
@@ -128,17 +128,21 @@ conda activate heart-disease-mlops
 
 ## 🐳 Deployment Options
 
-### Docker
+### Option 1: Kubernetes (Primary)
 ```bash
-# Build and run
-docker-compose up -d
+# Deploy all resources
+kubectl apply -f k8s/
 
-# Test
-curl http://localhost:8000/health
-curl http://localhost:8000/docs
+# Verify Deployment
+kubectl get pods -n ml-models
+```
 
-# Stop
-docker-compose down
+### Option 2: Docker Compose (Monitoring Stack)
+If you want to run the full monitoring stack locally (outside Kubernetes):
+
+```bash
+cd monitoring
+docker-compose -f docker-compose-monitoring.yml up -d
 ```
 
 ---
@@ -259,7 +263,7 @@ GET /metrics  # Prometheus format
        │
        ▼
 ┌─────────────────┐
-│  ML Pipeline    │  ← 7 Python scripts
+│  ML Pipeline    │  ← 4 Python scripts
 │  (Training)     │
 └──────┬──────────┘
        │
@@ -294,14 +298,14 @@ GET /metrics  # Prometheus format
 
 ✅ **Code**: All ML pipeline + API scripts  
 ✅ **Docker**: Dockerfile + docker-compose.yml  
-✅ **Dependencies**: requirements.txt + environment.yml  
-✅ **Dataset**: Download script (01_data_acquisition.py)  
-✅ **Notebooks/Scripts**: EDA, training, inference  
+✅ **Dependencies**: requirements.txt  
+✅ **Dataset**: Handled by 01_data_pipeline.py  
+✅ **Notebooks/Scripts**: Pipeline scripts (01-04)  
 ✅ **Tests**: tests/ folder with 31 unit tests  
 ✅ **CI/CD**: GitHub Actions workflow  
-✅ **Deployment**: Kubernetes manifests
-✅ **Screenshots**: screenshots/ folder (to be populated)  
-✅ **Report**: FINAL_REPORT.md (10+ pages)  
+✅ **Deployment**: Kubernetes manifests  
+✅ **Screenshots**: k8s/screenshots/ folder  
+✅ **Report**: FINAL_REPORT.md (Comprehensive)
 
 ---
 
