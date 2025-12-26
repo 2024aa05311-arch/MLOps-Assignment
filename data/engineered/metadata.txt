@@ -1,0 +1,10 @@
+n_features: 13
+n_train_samples: 242
+n_test_samples: 61
+train_class_0: 131
+train_class_1: 111
+test_class_0: 33
+test_class_1: 28
+test_size: 0.2
+random_state: 42
+scaling_method: StandardScaler

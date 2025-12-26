@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1766697120227
+current_stage: None
+description: null
+last_updated_timestamp: 1766697120227
+name: heart_disease_logistic_regression
+run_id: da8e2f54e278460bbc54dbc69efe7abd
+run_link: null
+source: /Users/amanmahnot/Library/CloudStorage/OneDrive-wilp.bits-pilani.ac.in/BITS/Semester
+  3/MLOps (S1-25_AIMLCZG523)/MLOps Assignment/mlflow_artifacts/da8e2f54e278460bbc54dbc69efe7abd/artifacts/model
+status: READY
+status_message: null
+storage_location: /Users/amanmahnot/Library/CloudStorage/OneDrive-wilp.bits-pilani.ac.in/BITS/Semester
+  3/MLOps (S1-25_AIMLCZG523)/MLOps Assignment/mlflow_artifacts/da8e2f54e278460bbc54dbc69efe7abd/artifacts/model
+user_id: null
+version: 2

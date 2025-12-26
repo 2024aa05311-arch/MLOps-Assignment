@@ -1,0 +1,10 @@
+{
+    "model_name": "svm",
+    "best_params": {
+        "C": 0.1,
+        "gamma": 0.001,
+        "kernel": "rbf"
+    },
+    "cv_roc_auc_score": 0.8911714694323389,
+    "model_type": "SVC"
+}

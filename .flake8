@@ -1,0 +1,35 @@
+[flake8]
+max-line-length = 100
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    mlruns,
+    mlflow_artifacts,
+    packaged_models,
+    outputs,
+    data,
+    .pytest_cache
+ignore =
+    E203,  # whitespace before ':'
+    E501,  # line too long (handled by black)
+    W503,  # line break before binary operator
+    E402   # module level import not at top of file
+
+per-file-ignores =
+    __init__.py:F401
+
+[black]
+line-length = 100
+target-version = ['py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  | mlruns
+  | mlflow_artifacts
+  | packaged_models
+  | outputs
+  | data
+)/
+'''

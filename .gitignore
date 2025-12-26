@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+htmlcov/
+.coverage
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+.tmp/
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MLflow (optional - uncomment to keep)
+# mlruns/
+# mlflow_artifacts/
+
+# Large data files (keep structure)
+data/raw/*.csv
+data/processed/*.csv
+data/engineered/*.csv
+
+# Keep directory structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/engineered/.gitkeep
+
+# Models (keep only essentials)
+models/*.pkl
+!models/preprocessor.pkl
+
+# Docker
+.dockerignore
+
+# Misc
+.optimization_log
+api.log

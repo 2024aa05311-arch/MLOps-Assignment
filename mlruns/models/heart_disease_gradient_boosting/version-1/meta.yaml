@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1766337239536
+current_stage: None
+description: null
+last_updated_timestamp: 1766337239536
+name: heart_disease_gradient_boosting
+run_id: b6f0148f2888495b86164bb3e31a720f
+run_link: null
+source: /Users/amanmahnot/Library/CloudStorage/OneDrive-wilp.bits-pilani.ac.in/BITS/Semester
+  3/MLOps (S1-25_AIMLCZG523)/MLOps Assignment/mlflow_artifacts/b6f0148f2888495b86164bb3e31a720f/artifacts/model
+status: READY
+status_message: null
+storage_location: /Users/amanmahnot/Library/CloudStorage/OneDrive-wilp.bits-pilani.ac.in/BITS/Semester
+  3/MLOps (S1-25_AIMLCZG523)/MLOps Assignment/mlflow_artifacts/b6f0148f2888495b86164bb3e31a720f/artifacts/model
+user_id: null
+version: 1

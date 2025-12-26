@@ -1,0 +1,10 @@
+{
+    "model_type": "RandomForestClassifier",
+    "packaging_date": "2025-12-26 02:43:46",
+    "format": "pickle",
+    "python_version": "3.x",
+    "sklearn_version": "scikit-learn>=1.3.0",
+    "description": "Random Forest model for heart disease prediction",
+    "input_features": 13,
+    "output_classes": 2
+}
