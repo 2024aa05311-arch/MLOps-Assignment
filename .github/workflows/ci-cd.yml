@@ -80,7 +80,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Run preprocessing pipeline
+    - name: Download data for testing
+      run: |
+        python 01_data_pipeline.py --download
+
+    - name: Check preprocessing pipeline
       run: |
         python preprocessing_pipeline.py
     
@@ -141,26 +145,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Download and preprocess data
+    - name: Run data pipeline
       run: |
-        python 01_data_acquisition.py
-        python 02_preprocessing.py
+        python 01_data_pipeline.py
     
-    - name: Feature engineering
+    - name: Run model pipeline
       run: |
-        python 04_feature_engineering.py
+        python 02_model_pipeline.py
     
-    - name: Train models with MLflow
+    - name: Run MLflow tracking
       run: |
-        python 07_mlflow_tracking.py
-    
-    - name: Evaluate models
-      run: |
-        python 06_model_evaluation.py
+        python 03_mlflow_tracking.py
     
     - name: Package best model
       run: |
-        python 09_model_packaging.py
+        python 04_model_packaging.py
     
     - name: Upload model artifacts
       uses: actions/upload-artifact@v4
