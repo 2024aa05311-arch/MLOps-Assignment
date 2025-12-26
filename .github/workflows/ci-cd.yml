@@ -80,9 +80,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Download data for testing
+    - name: Prepare test data
       run: |
         python 01_data_pipeline.py --download
+        python 01_data_pipeline.py --preprocess
+        python 02_model_pipeline.py --feature-engineering
 
     - name: Check preprocessing pipeline
       run: |

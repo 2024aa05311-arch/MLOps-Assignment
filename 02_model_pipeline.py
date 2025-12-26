@@ -961,11 +961,22 @@ def model_evaluation_pipeline(
 
 
 if __name__ == "__main__":
-    # If no CLI args provided, run full pipeline (feature engineering, training, eval)
-    X_train, X_test, y_train, y_test, scaler, feature_cols = feature_engineering_pipeline()
-    print(f"\n[INFO] Ready for model training with {len(feature_cols)} features!")
-    models, X_train, X_test, y_train, y_test = model_training_pipeline()
-    print("\n[INFO] Models are ready for evaluation!")
-    all_results, summary_df = model_evaluation_pipeline()
-    print("\n[SUCCESS] Model evaluation complete!")
-    print("          Review the visualizations and metrics to select the best model.")
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Model Pipeline")
+    parser.add_argument("--feature-engineering", action="store_true", help="Run only feature engineering")
+    args = parser.parse_args()
+
+    if args.feature_engineering:
+        print("[INFO] Running feature engineering only...")
+        feature_engineering_pipeline()
+        print("[SUCCESS] Feature engineering complete!")
+    else:
+        # If no CLI args provided or default behavior, run full pipeline
+        X_train, X_test, y_train, y_test, scaler, feature_cols = feature_engineering_pipeline()
+        print(f"\n[INFO] Ready for model training with {len(feature_cols)} features!")
+        models, X_train, X_test, y_train, y_test = model_training_pipeline()
+        print("\n[INFO] Models are ready for evaluation!")
+        all_results, summary_df = model_evaluation_pipeline()
+        print("\n[SUCCESS] Model evaluation complete!")
+        print("          Review the visualizations and metrics to select the best model.")
