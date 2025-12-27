@@ -312,18 +312,6 @@ GET /metrics  # Prometheus format
 
 ---
 
-## 🎬 Video Demo
-
-[Record video showing]:
-1. Run ML pipeline
-2. View MLflow experiments
-3. Test API with Swagger
-4. Deploy with Docker
-5. Show Kubernetes deployment
-6. View Grafana dashboard
-
----
-
 ## 🔗 Links & Resources
 
 - **Repository**: https://github.com/2024aa05311-arch/MLOps-Assignment

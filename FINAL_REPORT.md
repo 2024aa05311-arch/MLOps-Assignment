@@ -99,7 +99,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # 4. Run complete pipeline
-# 4. Run complete pipeline
 python 01_data_pipeline.py       # Data acquisition and preprocessing
 python 02_model_pipeline.py      # Feature engineering, training, and evaluation
 python 03_mlflow_tracking.py     # Experiment tracking with MLflow
@@ -475,23 +474,8 @@ Created production-ready Kubernetes configurations:
 - ✅ `service.yaml` - LoadBalancer for external access
 - ✅ `configmap.yaml` - Application configuration
 - ✅ `hpa.yaml` - Auto-scaling (CPU/memory based)
-- ✅ `screenshots/` - Task 7 deployment proof
 
-### 8.3 Deployment Evidence (Screenshots)
-
-**1. Pods Running**
-![Pods Running](k8s/Screenshots/pods_running.png)
-*Figure 8.1: Successful deployment with 3 replicas running*
-
-**2. Services Exposed**
-![Services Exposed](k8s/Screenshots/services_exposed.png)
-*Figure 8.2: LoadBalancer service exposing port 80*
-
-**3. Swagger UI Verification**
-![Swagger UI](k8s/Screenshots/swagger_UI_test_results.png)
-*Figure 8.3: Live API documentation and testing interface*
-
-### 8.4 Deployment Features
+### 8.3 Deployment Features
 
 **High Availability:**
 - 3 pod replicas
