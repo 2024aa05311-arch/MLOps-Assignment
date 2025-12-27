@@ -37,6 +37,9 @@ python 04_model_packaging.py
 ```bash
 # Option A: Docker (Easiest)
 docker-compose up -d
+# Or with monitoring stack
+cd monitoring
+docker-compose -f docker-compose-monitoring.yml up -d
 
 # Option B: Kubernetes
 kubectl apply -f k8s/
@@ -326,7 +329,6 @@ GET /metrics  # Prometheus format
 - **Repository**: https://github.com/2024aa05311-arch/MLOps-Assignment
 - **Dataset**: [UCI Heart Disease](https://archive.ics.uci.edu/dataset/45/heart+disease)
 - **Full Report**: See `FINAL_REPORT.md`
-- **Technical Details**: See `walkthrough.md` artifact
 
 ---
 
@@ -345,7 +347,7 @@ This is an academic project. For production use:
 
 **Name**: Aman Mahnot  
 **Email**: 2024AA05311@wilp.bits-pilani.ac.in  
-**Course**: MLOps Assignment  
+**Course**: MLOps (S1-25_AIMLCZG523)  
 **Date**: December 2025
 
 ---

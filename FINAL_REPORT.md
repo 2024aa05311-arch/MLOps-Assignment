@@ -88,7 +88,7 @@ Heart disease is the leading cause of death globally. This project develops an M
 
 ```bash
 # 1. Clone repository
-git clone <repository-url>
+git clone https://github.com/2024aa05311-arch/MLOps-Assignment.git
 cd MLOps-Assignment
 
 # 2. Create virtual environment
