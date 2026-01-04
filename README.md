@@ -46,6 +46,8 @@ kubectl apply -f k8s/
 
 # Option C: Local
 python app.py
+# Or
+python3 app.py
 ```
 
 **Access**: http://localhost:8000/docs
