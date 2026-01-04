@@ -13,25 +13,25 @@
 This project implements a complete, production-ready MLOps pipeline for heart disease prediction using machine learning. The pipeline encompasses data acquisition, exploratory data analysis, model training, experiment tracking, containerization, Kubernetes deployment, and comprehensive monitoring.
 
 **Key Achievements:**
-- ✅ **Model Performance**: 88.52% accuracy, 96.10% ROC-AUC
-- ✅ **Production Ready**: Fully containerized with Docker and Kubernetes
-- ✅ **CI/CD Pipeline**: Automated testing and deployment with GitHub Actions
-- ✅ **Monitoring**: Complete observability with Prometheus and Grafana
-- ✅ **MLOps Best Practices**: Experiment tracking, versioning, reproducibility
+- **Model Performance**: 88.52% accuracy, 96.10% ROC-AUC
+- **Production Ready**: Fully containerized with Docker and Kubernetes
+- **CI/CD Pipeline**: Automated testing and deployment with GitHub Actions
+- **Monitoring**: Complete observability with Prometheus and Grafana
+- **MLOps Best Practices**: Experiment tracking, versioning, reproducibility
 
 ---
 
 ## Table of Contents
 
-1. [Project Overview](#1-project-overview)
-2. [Setup & Installation](#2-setup--installation)
-3. [Exploratory Data Analysis](#3-exploratory-data-analysis)
-4. [Modeling Approach](#4-modeling-approach)
-5. [Experiment Tracking](#5-experiment-tracking)
-6. [System Architecture](#6-system-architecture)
-7. [CI/CD Pipeline](#7-cicd-pipeline)
-8. [Deployment](#8-deployment)
-9. [Monitoring & Observability](#9-monitoring--observability)
+1.  [Project Overview](#1-project-overview)
+2.  [Setup & Installation](#2-setup--installation)
+3.  [Exploratory Data Analysis](#3-exploratory-data-analysis)
+4.  [Modeling Approach](#4-modeling-approach)
+5.  [Experiment Tracking](#5-experiment-tracking)
+6.  [System Architecture](#6-system-architecture)
+7.  [CI/CD Pipeline](#7-cicd-pipeline)
+8.  [Deployment](#8-deployment)
+9.  [Monitoring & Observability](#9-monitoring--observability)
 10. [Results & Performance](#10-results--performance)
 11. [Future Work](#11-future-work)
 12. [Repository & Resources](#12-repository--resources)
@@ -134,15 +134,15 @@ helm install heart-disease-api ./helm/heart-disease-api
 
 ### 3.1 Data Quality
 
-| Metric | Value |
-|--------|-------|
-| Total Samples | 303 |
-| Features | 13 |
+| Metric         | Value     |
+|----------------|-----------|
+| Total Samples  | 303       |
+| Features       | 13        |
 | Missing Values | 6 (1.98%) |
-| Duplicates | 0 |
-| Class Balance | 54% / 46% |
+| Duplicates     | 0         |
+| Class Balance  | 54% / 46% |
 
-**Quality Assessment**: ✅ Excellent - Minimal missing values, well-balanced classes
+**Quality Assessment**: Excellent - Minimal missing values, well-balanced classes
 
 ### 3.2 Key Findings
 
@@ -166,11 +166,11 @@ helm install heart-disease-api ./helm/heart-disease-api
 ### 3.3 Visualization Insights
 
 Generated comprehensive visualizations:
-- ✅ Class balance plots (bar + pie charts)
-- ✅ Feature distributions (histograms)
-- ✅ Correlation heatmap
-- ✅ Features by target class (box plots)
-- ✅ Interactive Sweetviz report
+- Class balance plots (bar + pie charts)
+- Feature distributions (histograms)
+- Correlation heatmap
+- Features by target class (box plots)
+- Interactive Sweetviz report
 
 **Key Insight**: Clear separation between disease/no disease groups for top predictive features
 
@@ -191,12 +191,12 @@ Generated comprehensive visualizations:
 
 Trained and evaluated **4 classification models**:
 
-| Model | Type | Hyperparameters Tuned |
-|-------|------|----------------------|
-| Logistic Regression | Linear | C, solver, penalty |
-| Random Forest | Ensemble | n_estimators, max_depth, min_samples |
-| SVM | Kernel | C, kernel, gamma |
-| Gradient Boosting | Ensemble | n_estimators, learning_rate, max_depth |
+| Model               | Type          | Hyperparameters Tuned                  |
+|---------------------|---------------|----------------------------------------|
+| Logistic Regression | Linear        | C, solver, penalty                     |
+| Random Forest       | Ensemble      | n_estimators, max_depth, min_samples   |
+| SVM                 | Kernel        | C, kernel, gamma                       |
+| Gradient Boosting   | Ensemble      | n_estimators, learning_rate, max_depth |
 
 ### 4.3 Hyperparameter Tuning
 
@@ -246,12 +246,12 @@ All models achieved CV ROC-AUC > 0.87, indicating robust performance
 
 ### 5.2 Experiment Results
 
-| Run | Model | Test Accuracy | Test ROC-AUC | CV ROC-AUC |
-|-----|-------|---------------|--------------|------------|
-| 1 | Logistic Regression | 86.89% | 0.9578 | 0.8917 |
-| **2** | **Random Forest** | **88.52%** | **0.9610** | **0.8930** |
-| 3 | SVM | 54.10%* | 0.9654 | 0.8912 |
-| 4 | Gradient Boosting | 85.25% | 0.9015 | 0.8756 |
+| Run   | Model               | Test Accuracy | Test ROC-AUC | CV ROC-AUC |
+|-------|---------------------|---------------|--------------|------------|
+| 1     | Logistic Regression | 86.89%        | 0.9578       | 0.8917     |
+| **2** | **Random Forest**   | **88.52%**    | **0.9610**   | **0.8930** |
+| 3     | SVM                 | 54.10%*       | 0.9654       | 0.8912     |
+| 4     | Gradient Boosting   | 85.25%        | 0.9015       | 0.8756     |
 
 *Note: SVM had prediction threshold issues despite high ROC-AUC
 
@@ -277,26 +277,26 @@ mlflow ui
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        MLOps Pipeline                            │
+│                        MLOps Pipeline                           │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐     │
-│  │  Data Layer  │───▶│  ML Pipeline │───▶│   Serving    │     │
-│  │              │    │              │    │    Layer     │     │
-│  │ • UCI Repo   │    │ • Training   │    │ • FastAPI    │     │
-│  │ • CSV Files  │    │ • Evaluation │    │ • Docker     │     │
-│  │ • Processing │    │ • MLflow     │    │ • Kubernetes │     │
-│  └──────────────┘    └──────────────┘    └──────────────┘     │
+│                                                                 │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐       │
+│  │  Data Layer  │───▶│  ML Pipeline │───▶│   Serving    │       │
+│  │              │    │              │    │    Layer     │       │
+│  │ • UCI Repo   │    │ • Training   │    │ • FastAPI    │       │
+│  │ • CSV Files  │    │ • Evaluation │    │ • Docker     │       │
+│  │ • Processing │    │ • MLflow     │    │ • Kubernetes │       │
+│  └──────────────┘    └──────────────┘    └──────────────┘.      │
 │         │                    │                    │             │
 │         ▼                    ▼                    ▼             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐     │
-│  │  Storage     │    │ Experiment   │    │  Monitoring  │     │
-│  │              │    │  Tracking    │    │              │     │
-│  │ • Models     │    │ • MLflow     │    │ • Prometheus │     │
-│  │ • Artifacts  │    │ • Registry   │    │ • Grafana    │     │
-│  │ • Configs    │    │ • Versioning │    │ • Logging    │     │
-│  └──────────────┘    └──────────────┘    └──────────────┘     │
-│                                                                  │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐       │
+│  │  Storage     │    │ Experiment   │    │  Monitoring  │       │
+│  │              │    │  Tracking    │    │              │       │
+│  │ • Models     │    │ • MLflow     │    │ • Prometheus │       │
+│  │ • Artifacts  │    │ • Registry   │    │ • Grafana    │       │
+│  │ • Configs    │    │ • Versioning │    │ • Logging    │       │
+│  └──────────────┘    └──────────────┘    └──────────────┘       │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -304,39 +304,39 @@ mlflow ui
 
 ```
 ┌─────────── Kubernetes Cluster ───────────┐
-│                                           │
+│                                          │
 │  ┌─────────────────────────────────────┐ │
 │  │      LoadBalancer Service           │ │
 │  │        (Port 80)                    │ │
 │  └──────────────┬──────────────────────┘ │
-│                 │                         │
+│                 │                        │
 │  ┌──────────────▼──────────────────────┐ │
-│  │    Heart Disease API Deployment    │ │
-│  │    (3 Replicas)                    │ │
-│  │                                    │ │
-│  │  ┌──────┐  ┌──────┐  ┌──────┐    │ │
-│  │  │ Pod  │  │ Pod  │  │ Pod  │    │ │
-│  │  │ :8000│  │ :8000│  │ :8000│    │ │
-│  │  └──────┘  └──────┘  └──────┘    │ │
-│  │                                    │ │
-│  │  Health Checks: /health            │ │
-│  │  Metrics: /metrics                 │ │
-│  │  Auto-scaling: 2-10 replicas       │ │
-│  └────────────────────────────────────┘ │
-│                                           │
+│  │    Heart Disease API Deployment    │  │
+│  │    (3 Replicas)                    │  │
+│  │                                    │  │
+│  │  ┌──────┐  ┌──────┐  ┌──────┐      │  │
+│  │  │ Pod  │  │ Pod  │  │ Pod  │      │  │
+│  │  │ :8000│  │ :8000│  │ :8000│      │  │
+│  │  └──────┘  └──────┘  └──────┘      │  │
+│  │                                    │  │
+│  │  Health Checks: /health            │  │
+│  │  Metrics: /metrics                 │  │
+│  │  Auto-scaling: 2-10 replicas       │  │
+│  └────────────────────────────────────┘  │
+│                                          │
 │  ┌────────────────────────────────────┐  │
 │  │  ConfigMap: API Configuration      │  │
-│  │  Namespace: ml-models               │  │
+│  │  Namespace: ml-models              │  │
 │  └────────────────────────────────────┘  │
-└───────────────────────────────────────────┘
+└──────────────────────────────────────────┘
           │
           ▼
 ┌─────────────────────────────────────────┐
-│     Monitoring Stack (Docker)            │
-│  ┌─────────┐  ┌──────────┐  ┌────────┐ │
-│  │Prometheus│◀─│ API     │─▶│Grafana │ │
-│  │  :9090  │  │ Metrics │  │ :3000  │ │
-│  └─────────┘  └──────────┘  └────────┘ │
+│     Monitoring Stack (Docker)           │
+│  ┌─────────┐  ┌──────────┐  ┌────────┐  │
+│  │Prometheus│◀─│ API     │─▶│Grafana │  │
+│  │  :9090  │  │ Metrics │  │ :3000   │  │
+│  └─────────┘  └──────────┘  └────────┘  │
 └─────────────────────────────────────────┘
 ```
 
@@ -428,15 +428,15 @@ mlflow ui
 
 ### 7.3 Artifacts Generated
 
-| Artifact | Contents | Retention |
-|----------|----------|-----------|
-| lint-results | Linting configs | 90 days |
-| coverage-report | HTML + XML coverage | 90 days |
-| test-results | Pytest results | 90 days |
-| trained-models | All model files | 90 days |
-| evaluation-results | Metrics, plots | 90 days |
-| mlflow-runs | Experiment data | 90 days |
-| deployment-docs | README, guides | 90 days |
+| Artifact           | Contents                | Retention |
+|--------------------|-------------------------|-----------|
+| lint-results       | Linting configs         | 90 days   |
+| coverage-report    | HTML + XML coverage     | 90 days   |
+| test-results       | Pytest results          | 90 days   |
+| trained-models     | All model files         | 90 days   |
+| evaluation-results | Metrics, plots          | 90 days   |
+| mlflow-runs        | Experiment data         | 90 days   |
+| deployment-docs    | README, guides          | 90 days   |
 
 ---
 
@@ -469,11 +469,11 @@ the final deployment was implemented using Kubernetes manifests
 ### 8.2 Kubernetes Manifests
 
 Created production-ready Kubernetes configurations:
-- ✅ `namespace.yaml` - ml-models namespace
-- ✅ `deployment.yaml` - 3 replicas with health checks
-- ✅ `service.yaml` - LoadBalancer for external access
-- ✅ `configmap.yaml` - Application configuration
-- ✅ `hpa.yaml` - Auto-scaling (CPU/memory based)
+- `namespace.yaml` - ml-models namespace
+- `deployment.yaml` - 3 replicas with health checks
+- `service.yaml` - LoadBalancer for external access
+- `configmap.yaml` - Application configuration
+- `hpa.yaml` - Auto-scaling (CPU/memory based)
 
 ### 8.3 Deployment Features
 
@@ -563,13 +563,13 @@ Pre-configured dashboard with 4 panels:
 
 **Best Model: Random Forest Classifier**
 
-| Metric | Value | Interpretation |
-|--------|-------|----------------|
-| Accuracy | 88.52% | Excellent overall performance |
-| Precision | 83.87% | 84% of positive predictions correct |
-| Recall | 92.86% | Detected 93% of disease cases |
-| F1-Score | 88.14% | Strong balance |
-| ROC-AUC | 96.10% | Excellent discrimination |
+| Metric    | Value   | Interpretation                      |
+|-----------|---------|-------------------------------------|
+| Accuracy  | 88.52%  | Excellent overall performance       |
+| Precision | 83.87%  | 84% of positive predictions correct |
+| Recall    | 92.86%  | Detected 93% of disease cases       |
+| F1-Score  | 88.14%  | Strong balance                      |
+| ROC-AUC   | 96.10%  | Excellent discrimination            |
 
 **Confusion Matrix:**
 ```
@@ -602,9 +602,9 @@ Disease            2       26
 ### 10.3 Test Coverage
 
 **Unit Tests: 31 tests total**
-- Preprocessing: 10 tests ✅
-- Data processing: 12 tests ✅
-- Prediction interface: 9 tests ✅
+- Preprocessing: 10 tests
+- Data processing: 12 tests
+- Prediction interface: 9 tests
 
 **Coverage: ~70%** (core functionality)
 
@@ -730,12 +730,12 @@ MLOps-Assignment/
 
 This project demonstrates a complete, production-ready MLOps pipeline implementing industry best practices:
 
-✅ **Data Pipeline**: Automated acquisition, cleaning, and validation  
-✅ **ML Pipeline**: Reproducible training with experiment tracking  
-✅ **Deployment**: Containerized with Kubernetes orchestration  
-✅ **CI/CD**: Automated testing and deployment  
-✅ **Monitoring**: Full observability with metrics and logs  
-✅ **Documentation**: Comprehensive guides and tutorials  
+**Data Pipeline**: Automated acquisition, cleaning, and validation  
+**ML Pipeline**: Reproducible training with experiment tracking  
+**Deployment**: Containerized with Kubernetes orchestration  
+**CI/CD**: Automated testing and deployment  
+**Monitoring**: Full observability with metrics and logs  
+**Documentation**: Comprehensive guides and tutorials  
 
 **Model Performance**: 88.52% accuracy with 96.10% ROC-AUC  
 **System Reliability**: High availability with auto-scaling  
@@ -747,4 +747,4 @@ The pipeline is ready for deployment to cloud platforms (AWS, GCP, Azure) and ca
 
 **Report Generated**: 2025-12-21  
 **Version**: 1.0.0  
-**Status**: ✅ Production Ready
+**Status**: Production Ready

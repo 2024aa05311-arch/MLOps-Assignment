@@ -4,17 +4,17 @@
 
 ---
 
-## 🎯 Quick Overview
+## Quick Overview
 
 - **Problem**: Predict heart disease risk from patient health data
 - **Dataset**: UCI Heart Disease (303 samples, 13 features)
 - **Model**: Random Forest - 88.52% accuracy, 96.10% ROC-AUC
 - **Tech Stack**: Python, FastAPI, Docker, Kubernetes, MLflow, Prometheus/Grafana
-- **Status**: ✅ Production Ready
+- **Status**: Production Ready
 
 ---
 
-## 🚀 Quick Start (3 Steps)
+## Quick Start (3 Steps)
 
 ### 1. Setup
 ```bash
@@ -52,7 +52,7 @@ python app.py
 
 ---
 
-## 📁 Simple Project Structure
+## Simple Project Structure
 
 ```
 MLOps-Assignment/
@@ -77,35 +77,35 @@ MLOps-Assignment/
 
 ---
 
-## 💡 Key Features
+## Key Features
 
-✅ **Complete ML Pipeline** - Data → Training → Evaluation → Deployment  
-✅ **Experiment Tracking** - MLflow for all experiments  
-✅ **CI/CD Pipeline** - GitHub Actions with tests  
-✅ **Containerization** - Docker & Kubernetes ready  
-✅ **Auto-Scaling** - Kubernetes HPA (2-10 pods)  
-✅ **Monitoring** - Prometheus + Grafana dashboards  
-✅ **Testing** - 31 unit tests, 70% coverage  
-✅ **Production Ready** - FastAPI with health checks  
+**Complete ML Pipeline** - Data → Training → Evaluation → Deployment  
+**Experiment Tracking** - MLflow for all experiments  
+**CI/CD Pipeline** - GitHub Actions with tests  
+**Containerization** - Docker & Kubernetes ready  
+**Auto-Scaling** - Kubernetes HPA (2-10 pods)  
+**Monitoring** - Prometheus + Grafana dashboards  
+**Testing** - 31 unit tests, 70% coverage  
+**Production Ready** - FastAPI with health checks  
 
 ---
 
-## 📊 Results
+## Results
 
-| Metric | Value |
-|--------|-------|
-| Model | Random Forest |
-| Accuracy | 88.52% |
-| Precision | 83.87% |
-| Recall | 92.86% |
-| F1-Score | 88.14% |
-| ROC-AUC | 96.10% |
+| Metric     | Value         |
+|------------|---------------|
+| Model      | Random Forest |
+| Accuracy   | 88.52%        |
+| Precision  | 83.87%        |
+| Recall     | 92.86%        |
+| F1-Score   | 88.14%        |
+| ROC-AUC    | 96.10%        |
 
 **Clinical Significance**: Only 2 missed disease cases out of 28 (High recall for screening)
 
 ---
 
-## 🔧 Detailed Setup
+## Detailed Setup
 
 ### Prerequisites
 - Python 3.10+
@@ -129,7 +129,7 @@ conda activate heart-disease-mlops
 
 ---
 
-## 🐳 Deployment Options
+## Deployment Options
 
 ### Option 1: Kubernetes (Primary)
 ```bash
@@ -150,7 +150,7 @@ docker-compose -f docker-compose-monitoring.yml up -d
 
 ---
 
-## 📈 Monitoring Stack
+## Monitoring Stack
 
 Start Prometheus + Grafana:
 ```bash
@@ -171,7 +171,7 @@ docker-compose -f docker-compose-monitoring.yml up -d
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -195,7 +195,7 @@ black --check .
 
 ---
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 **GitHub Actions** automatically runs on every push/PR:
 
@@ -219,7 +219,7 @@ The pipeline triggers automatically on:
 
 ---
 
-## 📚 API Documentation
+## API Documentation
 
 ### Endpoints
 
@@ -257,38 +257,38 @@ GET /metrics  # Prometheus format
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-┌─────────────┐
-│  Data (UCI) │
-└──────┬──────┘
-       │
-       ▼
+┌─────────────────┐
+│  Data (UCI)     │
+└────────┬────────┘
+         │
+         ▼
 ┌─────────────────┐
 │  ML Pipeline    │  ← 4 Python scripts
 │  (Training)     │
-└──────┬──────────┘
-       │
-       ▼
+└────────┬────────┘
+         │
+         ▼
 ┌─────────────────┐
 │  MLflow         │  ← Experiment tracking
 │  (Versioning)   │
-└──────┬──────────┘
-       │
-       ▼
+└────────┬────────┘
+         │
+         ▼
 ┌─────────────────┐
 │  FastAPI        │  ← REST API
 │  (Serving)      │
-└──────┬──────────┘
-       │
-       ▼
+└────────┬────────┘
+         │
+         ▼
 ┌─────────────────┐
 │  Docker/K8s     │  ← Deployment
 │  (Production)   │
-└──────┬──────────┘
-       │
-       ▼
+└────────┬────────┘
+         │
+         ▼
 ┌─────────────────┐
 │  Prometheus     │  ← Monitoring
 │  + Grafana      │
@@ -299,20 +299,20 @@ GET /metrics  # Prometheus format
 
 ## 📝 Assignment Deliverables
 
-✅ **Code**: All ML pipeline + API scripts  
-✅ **Docker**: Dockerfile + docker-compose.yml  
-✅ **Dependencies**: requirements.txt  
-✅ **Dataset**: Handled by 01_data_pipeline.py  
-✅ **Notebooks/Scripts**: Pipeline scripts (01-04)  
-✅ **Tests**: tests/ folder with 31 unit tests  
-✅ **CI/CD**: GitHub Actions workflow  
-✅ **Deployment**: Kubernetes manifests  
-✅ **Screenshots**: k8s/screenshots/ folder  
-✅ **Report**: FINAL_REPORT.md (Comprehensive)
+**Code**: All ML pipeline + API scripts  
+**Docker**: Dockerfile + docker-compose.yml  
+**Dependencies**: requirements.txt  
+**Dataset**: Handled by 01_data_pipeline.py  
+**Notebooks/Scripts**: Pipeline scripts (01-04)  
+**Tests**: tests/ folder with 31 unit tests  
+**CI/CD**: GitHub Actions workflow  
+**Deployment**: Kubernetes manifests  
+**Screenshots**: k8s/screenshots/ folder  
+**Report**: FINAL_REPORT.md (Comprehensive)
 
 ---
 
-## 🔗 Links & Resources
+## Links & Resources
 
 - **Repository**: https://github.com/2024aa05311-arch/MLOps-Assignment
 - **Dataset**: [UCI Heart Disease](https://archive.ics.uci.edu/dataset/45/heart+disease)
@@ -320,7 +320,7 @@ GET /metrics  # Prometheus format
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is an academic project. For production use:
 - Add authentication to API
@@ -331,14 +331,15 @@ This is an academic project. For production use:
 
 ---
 
-## 👤 Author
+## Authors
 
-**Name**: Aman Mahnot  
-**Email**: 2024AA05311@wilp.bits-pilani.ac.in  
-**Course**: MLOps (S1-25_AIMLCZG523)  
-**Date**: December 2025
-
----
+| S.No | Name                | Roll No     |
+|------|---------------------|-------------|
+| 1    | Aman Mahnot         | 2024AA05311 |
+| 2    | Nandini             | 2024AA05467 |
+| 3    | Prabodh Saxena      | 2024AA05332 |
+| 4    | Surya V             | 2024AA05312 |
+| 5    | Rachit Pankaj Lalla | 2024AA05334 |
 
 **Version**: 1.0.0  
 **Status**: Production Ready
