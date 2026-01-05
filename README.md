@@ -346,4 +346,4 @@ This is an academic project. For production use:
 **Version**: 1.0.0  
 **Status**: Production Ready
 
-For detailed technical documentation, see `FINAL_REPORT.md`
+For detailed technical documentation, see `MLOps_Assignment_1_Group_97.pdf`
