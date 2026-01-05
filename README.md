@@ -299,7 +299,7 @@ GET /metrics  # Prometheus format
 
 ---
 
-## 📝 Assignment Deliverables
+## Assignment Deliverables
 
 **Code**: All ML pipeline + API scripts  
 **Docker**: Dockerfile + docker-compose.yml  
@@ -335,7 +335,7 @@ This is an academic project. For production use:
 
 ## Authors
 
-| S.No | Name                | Roll No     |
+| S.No | Name                | Bits ID     |
 |------|---------------------|-------------|
 | 1    | Aman Mahnot         | 2024AA05311 |
 | 2    | Nandini             | 2024AA05467 |

@@ -36,11 +36,6 @@ ENV/
 mlruns/
 mlflow_artifacts/
 
-# Large data files (keep structure)
-data/raw/*.csv
-data/processed/*.csv
-data/engineered/*.csv
-
 # Keep directory structure
 !data/raw/.gitkeep
 !data/processed/.gitkeep
